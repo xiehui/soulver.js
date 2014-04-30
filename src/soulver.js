@@ -7,7 +7,7 @@
       lineNumbers: true,
       lineWrapping: true,
       onUpdate: function() {
-        var e, i, val, _i, _ref, _results;
+        var e, i, val, _i, _ref, _results, _total;
         if (!editor) {
           return;
         }
@@ -19,6 +19,8 @@
             val = parser.parse(editor.getLine(i));
             if (val == null) {
               val = '';
+            } else {
+                _total = _total == null ? val.toString() : _total + ' + ' + val.toString();
             }
           } catch (_error) {
             e = _error;
@@ -26,6 +28,13 @@
           }
           _results.push($('<pre>').html(val.toString()).height($('pre:nth-child(' + (i + 1) + ')', gutter).height()).appendTo(rightbar));
         }
+          _total = parser.parse(_total);
+          if (_total != null) {
+//              _results.push($('<pre>').html('total:'+_total.toString()).height($('pre:nth-child(' + (editor.lineCount()) + ')', gutter).height()).appendTo(rightbar));
+//              CodeMirror.commands.newlineAndIndent();
+              $('#total').text('total:'+_total.toString());
+          }
+
         return _results;
       }
     });
