@@ -30,9 +30,7 @@
         }
           _total = parser.parse(_total);
           if (_total != null) {
-//              _results.push($('<pre>').html('total:'+_total.toString()).height($('pre:nth-child(' + (editor.lineCount()) + ')', gutter).height()).appendTo(rightbar));
-//              CodeMirror.commands.newlineAndIndent();
-              $('#total').text('total:'+_total.toString());
+              $('#total').text(_total.toString());
           }
 
         return _results;
